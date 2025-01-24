@@ -21,21 +21,21 @@ echo "  ___) | (_| | | | | | | |_) | (_| | | |_) | |_| | |  __/ (_| | (_) | | (_
 echo " |____/ \__,_|_| |_| |_|_.__/ \__,_| |_.__/ \__, | |_|   \__,_|\___/|_|\___/	"
 echo "                                            |___/					"
 
-echo -e "\nSamba File Server Installation For Ubuntu Server"
+echo  "\nSamba File Server Installation For Ubuntu Server"
 
-echo -e "${RED}\nWARNING: This Server Must Be Connected to internet in order to proceed!"
-echo -e "${RED}\nWARNING: This will clear existing samba installed."
-echo -e "${NC}Do you want to continue [Y/n]?"
+echo  "${RED}\nWARNING: This Server Must Be Connected to internet in order to proceed!"
+echo  "${RED}\nWARNING: This will clear existing samba installed."
+echo  "${NC}Do you want to continue [Y/n]?"
 read ready
 
 if [[ -z $ready || $ready == "n" || $ready == "N" ]]; then
   exit
 fi
 
-echo -e "${RED}==> ${NC}Preparing..."
+echo  "${RED}==> ${NC}Preparing..."
 sleep 1
 
-echo -e "${RED}==> ${NC}Checking for old installations..."
+echo  "${RED}==> ${NC}Checking for old installations..."
 sleep 1
 
 if [ -d /etc/samba ]; then
@@ -59,20 +59,20 @@ if [ -d /etc/samba ]; then
   rm -rf /etc/apparmor.d/samba
 fi
 
-echo -e "${RED}==> ${NC}Updating your system..."
+echo  "${RED}==> ${NC}Updating your system..."
 sleep 1
 apt update
 
-echo -e "${RED}==> ${NC}Installing Samba..."
+echo  "${RED}==> ${NC}Installing Samba..."
 sleep 1
 apt install samba
 
-echo -e "${RED}==> ${NC}Updating Firewall for samba..."
+echo  "${RED}==> ${NC}Updating Firewall for samba..."
 sleep 1
 firewall-cmd --add-service=samba --permanent
 firewall-cmd --add-port=445/tcp --permanent
 firewall-cmd --reload
-echo -e "${RED}==> ${NC}Added samba to firewall..."
+echo  "${RED}==> ${NC}Added samba to firewall..."
 sleep 1
 
 echo "Done! Now configure samba according to your taste!."
